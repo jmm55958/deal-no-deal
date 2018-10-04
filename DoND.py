@@ -3,9 +3,7 @@ import board
 import random
 import time
 
-def removeCase(caseList, moneyDisplay, caseNo):
-    #takes out user case from case list
-    caseList.pop(caseNo-1)
+def removeCase(caseList, moneyDisplay, caseNo, first):
 
     case = caseList[caseNo-1]
 
@@ -14,9 +12,9 @@ def removeCase(caseList, moneyDisplay, caseNo):
         case.face = 'XX'
     else:
         case.face = 'X'
-
-    index = moneyDisplay.index(case.value)
-    moneyDisplay[index] = '---------'
+    if(first==False):
+        index = moneyDisplay.index(case.value)
+        moneyDisplay[index] = '---------'
 
 
 #opening statements
@@ -38,7 +36,6 @@ random.shuffle(moneyList)
 for num in range(1, 27):
     case = Case(num, moneyList[num-1])
     caseList.append(case)
-    #print('added '+str(num))
 
 #print the board
 board.printScreen(caseList, moneyDisplay)
@@ -48,7 +45,7 @@ caseNo = int(input("Pick your case: "))
 userCase = caseList[caseNo-1]
 
 #call remove case
-removeCase(caseList, moneyDisplay, caseNo)
+removeCase(caseList, moneyDisplay, caseNo, True)
 
 #game variables
 game = True
@@ -58,11 +55,13 @@ cases = 25
 
 
 #testing 
-for x in caseList:
-    print(x.face)
-print(caseList[25].face)
-exit()
-
+# counter =0
+# for x in caseList:
+#     print(x.face),
+#     print(' for '+str(counter))
+#     counter +=1
+# print(caseList[25].face)
+# exit()
 
 
 #main game loop
@@ -80,7 +79,6 @@ while(game):
                 print("This round please open "+ str(turn)+" cases.")
 
             #choosing a case to open
-            time.sleep(2)
             caseNo = input("Please choose a case to open: ")
 
             print('You have chosen case number '+ str(caseNo)+ "!")
@@ -91,16 +89,20 @@ while(game):
             time.sleep(.5)
             print('.'),
             time.sleep(.5)
-            print(str(caseList[caseNo-1].value)+"!")
+            print(str(caseList[int(caseNo)-1].value)+"!")
             
 
             #remove the case from the lists
-            removeCase(caseList, moneyDisplay, caseNo)
-            board.printScreen(caseList, moneyDisplay)
+            removeCase(caseList, moneyDisplay, int(caseNo), False)
 
             #increment the counter
             counter = counter +1
             turn = turn -1
+            
+            time.sleep(1.5)
+            if(turn!=0):
+                print('Let\'s open another!')
+            time.sleep(1.5)
 
             
 
