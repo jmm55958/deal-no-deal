@@ -3,6 +3,7 @@ class Case(object):
         self.number = num
         self.value = val
         self.face = str(num)
+        self.frontFace = '??'
 
     
 

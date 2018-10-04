@@ -38,11 +38,12 @@ for num in range(1, 27):
     caseList.append(case)
 
 #print the board
-board.printScreen(caseList, moneyDisplay)
+board.printScreen(caseList, moneyDisplay, name, '??')
 
 #picking your case
 caseNo = int(input("Pick your case: "))
 userCase = caseList[caseNo-1]
+userCase.frontFace = userCase.face
 
 #call remove case
 removeCase(caseList, moneyDisplay, caseNo, True)
@@ -73,7 +74,7 @@ while(game):
         #loops through the cases before the banker
         counter = 0
         while(turn!=0):
-            board.printScreen(caseList, moneyDisplay)
+            board.printScreen(caseList, moneyDisplay, name, userCase.frontFace)
             if(counter ==0):
                 print("You have "+str(cases)+" cases left to open!")
                 print("This round please open "+ str(turn)+" cases.")

@@ -1,4 +1,4 @@
-def printScreen(caseList, moneyList):
+def printScreen(caseList, moneyList,name,userCase):
     print()
     print('-----------------------------------------------------')
     print(' Cases                         | Values    ')
@@ -13,8 +13,8 @@ def printScreen(caseList, moneyList):
     print('   '+caseList[0].face+'   '+caseList[1].face+'   '+caseList[2].face+'   '+caseList[3].face+'   '+caseList[4].face+'   '+caseList[5].face+'       | '+moneyList[7]+'  '+moneyList[20]+' ')
     print('                               | '+moneyList[8]+'  '+moneyList[21]+' ')
     print('-------------------------------| '+moneyList[9]+'  '+moneyList[22]+' ')
-    print('  NAME  ,                      | '+moneyList[10]+'  '+moneyList[23]+' ')
-    print('       Your Case: ??           | '+moneyList[11]+'  '+moneyList[24]+' ')
+    print('  '+name+',                        | '+moneyList[10]+'  '+moneyList[23]+' ')
+    print('       Your Case: '+userCase+'           | '+moneyList[11]+'  '+moneyList[24]+' ')
     print('                               | '+moneyList[12]+'  '+moneyList[25]+' ')
     print('-----------------------------------------------------')
     print()
